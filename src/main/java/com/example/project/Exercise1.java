@@ -22,6 +22,26 @@ public class Exercise1 {
 
     public <T extends Comparable<T>> boolean bstSimilares(BST<T> a1, BST<T> a2){
 
-        return false;
+        return nodeSimilares(a1.root, a2.root);
     }
+    //nueva clase que permite recursividad usando nodos.
+    public boolean nodeSimilares (Node n1, Node n2){
+        //comprueba que los nodos comparado sean iguales, ya sean nulos, o tengan valor
+        if (n1==null||n2==null){
+            if(n1 == n2){
+                return true;
+            }
+            return false;
+        }
+
+        if (n1!=null&&n2!=null){
+            // se llama de nuevo la funcion para ambos nodos , una vez se comprueba que se cumple la condicion
+            return nodeSimilares(n1.left, n2.left) && nodeSimilares(n1.right, n2.right);
+            
+        }
+
+        return false;
+       
+    }
+
 }
